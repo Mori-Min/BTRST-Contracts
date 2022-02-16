@@ -1,3 +1,4 @@
+// SPDX-License-Identifier: MIT
 pragma solidity ^0.8.11;
 
 import "../Timelock.sol";
@@ -7,10 +8,7 @@ interface Administered {
 }
 
 contract TimelockHarness is Timelock {
-    constructor(address admin_, uint256 delay_)
-        public
-        Timelock(admin_, delay_)
-    {}
+    constructor(address admin_, uint256 delay_) Timelock(admin_, delay_) {}
 
     function harnessSetPendingAdmin(address pendingAdmin_) public {
         pendingAdmin = pendingAdmin_;
@@ -22,10 +20,7 @@ contract TimelockHarness is Timelock {
 }
 
 contract TimelockTest is Timelock {
-    constructor(address admin_, uint256 delay_)
-        public
-        Timelock(admin_, 2 days)
-    {
+    constructor(address admin_, uint256 delay_) Timelock(admin_, 2 days) {
         delay = delay_;
     }
 
